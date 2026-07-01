@@ -1,0 +1,59 @@
+<!-- HERO -->
+<section class="hero-block">
+    <p class="eyebrow">Maternity Care · Mumbai</p>
+    <h1 class="hero-title">
+        Welcome New Beginnings
+        <span class="hero-title__accent">With Care You Can Trust</span>
+    </h1>
+    <p class="hero-lead">
+        Book your maternity package today and enjoy exclusive benefits worth up to
+        <strong>₹20,000*</strong>. Because every mother deserves exceptional care,
+        delivered by India's #1 Maternity Care Specialists.
+    </p>
+
+    <p class="block-label">Exclusive early-booking benefits</p>
+    <ul class="tick-list" role="list">
+        <li><span class="tick-amt">₹5,000*</span> Post-delivery benefits</li>
+        <li><span class="tick-amt">₹10,000*</span> Room upgrade</li>
+        <li><span class="tick-amt">₹5,000*</span> Antenatal session</li>
+    </ul>
+
+    <a href="#lead-form" class="btn btn--primary btn--lg js-scroll">Book your free consultation</a>
+
+    <div class="hero-banner">
+        <!-- Loads your real photo if present; otherwise a placeholder photo; otherwise the illustration below.
+               Replace by dropping assets/hero-mother.jpg into /assets (see assets/README.txt). -->
+        <img src="assets/why-care.webp" alt="An expectant mother in care at Surya Hospitals"
+            onload="this.classList.add('is-loaded'); var s=this.parentNode.querySelector('.hero-banner__illus'); if(s) s.style.display='none';"
+            onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://picsum.photos/seed/suryamaternity/1200/520';}else{this.remove();}" />
+        <svg class="hero-banner__illus" viewBox="0 0 760 320" role="img"
+            aria-label="Illustration of an expectant mother">
+            <defs>
+                <linearGradient id="bnSky" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#e8f6fc" />
+                    <stop offset="1" stop-color="#fde7ef" />
+                </linearGradient>
+                <linearGradient id="bnFig" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#21b7e3" />
+                    <stop offset="1" stop-color="#0089b3" />
+                </linearGradient>
+            </defs>
+            <rect width="760" height="320" fill="url(#bnSky)" />
+            <circle cx="610" cy="70" r="120" fill="#fff" opacity=".45" />
+            <circle cx="120" cy="250" r="70" fill="#fff" opacity=".4" />
+            <circle cx="700" cy="250" r="8" fill="#ed3b6e" opacity=".4" />
+            <circle cx="60" cy="90" r="6" fill="#00a3d4" opacity=".5" />
+            <g transform="translate(330 40)">
+                <path d="M40 26c0-15 11-26 25-26s25 11 25 26c0 8-3 13-6 20-2-12-9-18-19-18s-18 7-20 19c-3-6-5-12-5-21z"
+                    fill="#16506c" />
+                <circle cx="65" cy="40" r="18" fill="#f6c9b0" />
+                <path
+                    d="M56 56c-8 1-12 7-13 17-2 19-4 38-7 63-1 18-2 36-2 49h78c2-17 4-36 3-54 14-4 21-19 14-33-4-12-15-18-29-21-7-7-13-18-20-23-4-3-9-4-12-3z"
+                    fill="url(#bnFig)" />
+                <path d="M58 74c2 19 11 41 35 53" fill="none" stroke="#f6c9b0" stroke-width="9"
+                    stroke-linecap="round" />
+                <path d="M92 118c-5-4-12-2-12 5 0 5 7 9 12 13 5-4 12-8 12-13 0-7-7-9-12-5z" fill="#ed3b6e" />
+            </g>
+        </svg>
+    </div>
+</section>
