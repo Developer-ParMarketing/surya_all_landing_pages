@@ -614,8 +614,8 @@ ul {
 }
 
 .stat__icon svg {
-    width: 24px;
-    height: 24px;
+    width: 44px;
+    height: 44px;
 }
 
 .stat__content {
@@ -1192,6 +1192,7 @@ ul {
 
 .benefits-total {
     text-align: center;
+
 }
 
 .offer-tag {
@@ -1211,7 +1212,7 @@ ul {
     font-size: 44px;
     font-weight: 800;
     line-height: 1;
-    color: #000;
+    color: #00a3d4;
     font-family: var(--font-display);
     text-shadow: 0 8px 25px rgba(0, 0, 0, .18);
 }
@@ -1354,7 +1355,7 @@ ul {
 
     .benefits .section-title {
         margin-bottom: 8px;
-        font-size: 30px;
+        font-size: 28px;
         line-height: 1.2;
     }
 
@@ -2100,7 +2101,7 @@ FAQ============================================================*/
 
 .footer__disclaimer {
     margin: 0;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.9;
     color: rgba(255, 255, 255, .78);
 }
@@ -2397,25 +2398,61 @@ FAQ============================================================*/
     cursor: pointer;
 }
 
-@media (max-width:992px) {
+.banner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
+}
+
+.banner picture,
+.banner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16 / 5;
+    /* large desktop */
+}
+
+/* Small laptops / landscape tablets */
+@media (max-width: 1200px) {
+    .banner img {
+        aspect-ratio: 16 / 6;
+    }
+}
+
+/* Tablets: iPad Mini 768, iPad Air 820, Surface Pro 7 912, Zenbook Fold ~853 */
+@media (max-width: 992px) {
     .banner {
         border-radius: 16px;
     }
 
     .banner img {
-        height: 200px;
-        object-fit: cover;
-        object-position: right center;
+        aspect-ratio: 5 / 2;
+        object-position: center center;
     }
 }
 
-@media (max-width:576px) {
+/* 569px–766px range */
+@media (max-width: 766px) and (min-width: 569px) {
     .banner img {
-        width: 100%;
-        height: 215px;
-        object-fit: cover;
-        object-position: 89% center;
-        display: block;
+        aspect-ratio: 7 / 3;
+        object-position: center center;
+    }
+}
+
+/* Mobile phones below 569px */
+@media (max-width: 568px) {
+    .banner img {
+        aspect-ratio: 4 / 5;
+        object-position: 50% center;
     }
 }
 
