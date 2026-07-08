@@ -1,59 +1,421 @@
-<!-- HERO -->
-<section class="hero-block">
-    <p class="eyebrow">Maternity Care · Mumbai</p>
-    <h1 class="hero-title">
-        Welcome New Beginnings
-        <span class="hero-title__accent">With Care You Can Trust</span>
-    </h1>
-    <p class="hero-lead">
-        Book your maternity package today and enjoy exclusive benefits worth up to
-        <strong>₹20,000*</strong>. Because every mother deserves exceptional care,
-        delivered by India's #1 Maternity Care Specialists.
-    </p>
+<!DOCTYPE html>
+<html lang="en">
 
-    <p class="block-label">Exclusive early-booking benefits</p>
-    <ul class="tick-list" role="list">
-        <li><span class="tick-amt">₹5,000*</span> Post-delivery benefits</li>
-        <li><span class="tick-amt">₹10,000*</span> Room upgrade</li>
-        <li><span class="tick-amt">₹5,000*</span> Antenatal session</li>
-    </ul>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promo Hero — Full Width, Responsive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:ital,wght@0,400;0,600;0,700;1,700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="promo-hero.css" />
+    <style>
+        :root {
+            /* Colors sampled directly from the reference banner (pixel-picked, not guessed) */
+            --pink: #ef016d;
+            --pink-2: #ff5d94;
+            --pink-soft: #fdeef3;
+            --blue-dark: #104392;
+            --ink: #2e2e2e;
+            --muted: #5a5a5a;
+            --shadow: 0 14px 40px -18px rgba(44, 44, 43, .22);
 
-    <a href="#lead-form" class="btn btn--primary btn--lg js-scroll">Book your free consultation</a>
+            --font-display: 'Lato', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
 
-    <div class="hero-banner">
-        <!-- Loads your real photo if present; otherwise a placeholder photo; otherwise the illustration below.
-               Replace by dropping assets/hero-mother.jpg into /assets (see assets/README.txt). -->
-        <img src="assets/why-care.webp" alt="An expectant mother in care at Surya Hospitals"
-            onload="this.classList.add('is-loaded'); var s=this.parentNode.querySelector('.hero-banner__illus'); if(s) s.style.display='none';"
-            onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://picsum.photos/seed/suryamaternity/1200/520';}else{this.remove();}" />
-        <svg class="hero-banner__illus" viewBox="0 0 760 320" role="img"
-            aria-label="Illustration of an expectant mother">
-            <defs>
-                <linearGradient id="bnSky" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#e8f6fc" />
-                    <stop offset="1" stop-color="#fde7ef" />
-                </linearGradient>
-                <linearGradient id="bnFig" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#21b7e3" />
-                    <stop offset="1" stop-color="#0089b3" />
-                </linearGradient>
-            </defs>
-            <rect width="760" height="320" fill="url(#bnSky)" />
-            <circle cx="610" cy="70" r="120" fill="#fff" opacity=".45" />
-            <circle cx="120" cy="250" r="70" fill="#fff" opacity=".4" />
-            <circle cx="700" cy="250" r="8" fill="#ed3b6e" opacity=".4" />
-            <circle cx="60" cy="90" r="6" fill="#00a3d4" opacity=".5" />
-            <g transform="translate(330 40)">
-                <path d="M40 26c0-15 11-26 25-26s25 11 25 26c0 8-3 13-6 20-2-12-9-18-19-18s-18 7-20 19c-3-6-5-12-5-21z"
-                    fill="#16506c" />
-                <circle cx="65" cy="40" r="18" fill="#f6c9b0" />
-                <path
-                    d="M56 56c-8 1-12 7-13 17-2 19-4 38-7 63-1 18-2 36-2 49h78c2-17 4-36 3-54 14-4 21-19 14-33-4-12-15-18-29-21-7-7-13-18-20-23-4-3-9-4-12-3z"
-                    fill="url(#bnFig)" />
-                <path d="M58 74c2 19 11 41 35 53" fill="none" stroke="#f6c9b0" stroke-width="9"
-                    stroke-linecap="round" />
-                <path d="M92 118c-5-4-12-2-12 5 0 5 7 9 12 13 5-4 12-8 12-13 0-7-7-9-12-5z" fill="#ed3b6e" />
-            </g>
-        </svg>
-    </div>
-</section>
+        * {
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background: #fff;
+        }
+
+        /* ============================================================
+   PROMO HERO — desktop/tablet: full-bleed photo, absolute-fill.
+   Mobile (<=640px): switches mechanics entirely — see below.
+   ============================================================ */
+        .promo-hero {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 1902 / 622;
+            min-height: 320px;
+        }
+
+        /* display:contents so <picture> doesn't add its own box — the <img>
+   inside behaves as if it were a direct child for positioning purposes */
+        .promo-hero__media {
+            display: contents;
+        }
+
+        .promo-hero__img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Scrim keeps text readable regardless of how the photo gets cropped.
+   Strongest at the left (where the text sits), fades out by ~60% width.
+   Desktop/tablet only — the mobile image already has its own built-in
+   fade, so no scrim is layered on top of it. */
+        .promo-hero__scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    rgba(253, 240, 244, .92) 0%,
+                    rgba(253, 240, 244, .78) 32%,
+                    rgba(253, 240, 244, .25) 58%,
+                    rgba(253, 240, 244, 0) 72%);
+            pointer-events: none;
+        }
+
+        .promo-hero__content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            width: 60%;
+            max-width: 1060px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(16px, 2.6vw, 56px) clamp(20px, 3.2vw, 64px);
+        }
+
+        /* Font sizes below (desktop/tablet) are measured off the reference
+   image's pixel dimensions (1902px wide) and expressed as vw so they
+   scale with a full-width banner. Mobile has its own separate sizes
+   further down — that vw math doesn't transfer to a portrait image
+   with completely different proportions, so it isn't reused as-is. */
+
+        .promo-hero__title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1.7rem, 4.2vw, 5rem);
+            line-height: 1.1;
+            letter-spacing: -.01em;
+            margin: 0 0 clamp(6px, 1vw, 14px);
+            color: var(--ink);
+        }
+
+        .promo-hero__title-accent {
+            display: block;
+            color: var(--pink);
+        }
+
+        .promo-hero__lead {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: clamp(.85rem, 1.16vw, 1.375rem);
+            line-height: 1.55;
+            color: var(--ink);
+            margin: 0 0 clamp(14px, 2.2vw, 26px);
+        }
+
+        .promo-hero__amt {
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        .promo-hero__specialist {
+            color: var(--blue-dark);
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .promo-pills {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(10px, 2vw, 28px);
+            margin: 0 0 clamp(16px, 2.6vw, 28px);
+            padding: 0;
+        }
+
+        .promo-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .promo-pill__icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(32px, 3.4vw, 52px);
+            height: clamp(32px, 3.4vw, 52px);
+            min-width: clamp(32px, 3.4vw, 52px);
+            border-radius: 50%;
+            background: var(--pink-soft);
+            color: var(--pink);
+            overflow: hidden;
+        }
+
+        /* Icon placeholders — swap the <img> src in the HTML for your real
+   icons. Sized to fill most of the circle, contained (not cropped). */
+        .promo-pill__icon img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .promo-pill__body {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.25;
+        }
+
+        .promo-pill__val {
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: clamp(.95rem, 1.37vw, 1.625rem);
+            color: var(--pink);
+        }
+
+        .promo-pill__lbl {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: clamp(.68rem, .95vw, 1.125rem);
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .promo-hero__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            align-self: flex-start;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: clamp(.85rem, 1.26vw, 1.5rem);
+            color: #fff;
+            background: var(--pink);
+            padding: clamp(10px, 1.6vw, 18px) clamp(18px, 2.6vw, 32px);
+            border-radius: 999px;
+            box-shadow: 0 12px 28px -12px rgba(239, 1, 109, .55);
+            transition: transform .18s ease;
+        }
+
+        .promo-hero__cta:hover {
+            transform: translateY(-2px);
+        }
+
+        .promo-hero__cta svg {
+            width: clamp(16px, 1.8vw, 24px);
+            height: clamp(16px, 1.8vw, 24px);
+        }
+
+        /* ============================================================
+   TABLET (900px down to 641px) — same overlay mechanics as
+   desktop, just tighter crop and a wider text column.
+   ============================================================ */
+        @media (max-width: 900px) {
+            .promo-hero {
+                aspect-ratio: 4 / 3.4;
+                min-height: 420px;
+            }
+
+            .promo-hero__img {
+                object-position: 68% center;
+            }
+
+            .promo-hero__scrim {
+                background: linear-gradient(90deg,
+                        rgba(253, 240, 244, .95) 0%,
+                        rgba(253, 240, 244, .88) 45%,
+                        rgba(253, 240, 244, .35) 78%,
+                        rgba(253, 240, 244, 0) 92%);
+            }
+
+            .promo-hero__content {
+                width: 78%;
+                max-width: none;
+            }
+        }
+
+        /* ============================================================
+   MOBILE (<=640px) — different mechanics, not just different
+   numbers. The <picture> swaps in a purpose-built portrait image
+   (assets/mobile-banner-blank.jpg) that already has its own fade
+   baked in. The image keeps its OWN natural height (no aspect-ratio
+   forced on it, no object-fit:cover stretching it) — so nothing can
+   inflate or distort it. Text is absolutely positioned on top of it.
+   If your copy ever gets long enough to exceed the image's height,
+   it spills onto the page background below, which matches the
+   image's own fade color — so it stays invisible instead of breaking
+   the layout the way the old scrim-based approach did.
+   ============================================================ */
+        @media (max-width: 640px) {
+            .promo-hero {
+                aspect-ratio: auto;
+                height: auto;
+                min-height: 0;
+                overflow: visible;
+            }
+
+            .promo-hero__media {
+                display: block;
+            }
+
+            .promo-hero__img {
+                position: static;
+                width: 100%;
+                height: auto;
+                object-fit: initial;
+                object-position: initial;
+            }
+
+            .promo-hero__scrim {
+                display: none;
+            }
+
+            .promo-hero__content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 2;
+                height: auto;
+                width: 100%;
+                max-width: none;
+                padding: 7% 6% 28px;
+                justify-content: flex-start;
+            }
+
+            /* Mobile type scale — sized fresh for a narrow portrait column,
+       not derived from the desktop vw formulas above. */
+            .promo-hero__title {
+                font-size: clamp(1.55rem, 6.4vw, 2.05rem);
+                line-height: 1.14;
+                margin-bottom: 8px;
+            }
+
+            .promo-hero__lead {
+                font-size: clamp(.82rem, 3.4vw, .92rem);
+                line-height: 1.5;
+                margin-bottom: 16px;
+            }
+
+            .promo-pills {
+                gap: 10px 16px;
+                margin-bottom: 16px;
+            }
+
+            .promo-pill__icon {
+                width: 38px;
+                height: 38px;
+                min-width: 38px;
+            }
+
+            .promo-pill__val {
+                font-size: .95rem;
+            }
+
+            .promo-pill__lbl {
+                font-size: .68rem;
+                white-space: normal;
+                white-space: normal;
+            }
+
+            .promo-hero__cta {
+                font-size: .88rem;
+                padding: 12px 22px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="promo-hero">
+        <picture class="promo-hero__media">
+            <source media="(max-width: 640px)" srcset="assets/mobile-banner-blank.jpg" />
+            <img class="promo-hero__img" src="assets/mother-baby-banner.jpg"
+                alt="Mother holding her newborn at Surya Hospitals" />
+        </picture>
+        <div class="promo-hero__scrim"></div>
+
+        <div class="promo-hero__content">
+            <h1 class="promo-hero__title">
+                Welcome New Beginnings
+                <span class="promo-hero__title-accent">With Care You Can Trust</span>
+            </h1>
+
+            <p class="promo-hero__lead">
+                Book your maternity package today and enjoy exclusive benefits worth up to
+                <strong class="promo-hero__amt">20,000*</strong>.
+                Because every mother deserves exceptional care, delivered by
+                <strong class="promo-hero__specialist">India's #1 Maternity Care Specialists.</strong>
+            </p>
+
+            <ul class="promo-pills" role="list">
+                <li class="promo-pill">
+                    <span class="promo-pill__icon">
+                        <!-- Replace with your own icon: assets/icon-post-delivery.png -->
+                        <img src="assets/icon-post-delivery.png" alt="" />
+                    </span>
+                    <span class="promo-pill__body">
+                        <span class="promo-pill__val">₹5,000*</span>
+                        <span class="promo-pill__lbl">Post-delivery benefits</span>
+                    </span>
+                </li>
+
+                <li class="promo-pill">
+                    <span class="promo-pill__icon">
+                        <!-- Replace with your own icon: assets/icon-room-upgrade.png -->
+                        <img src="assets/icon-room-upgrade.png" alt="" />
+                    </span>
+                    <span class="promo-pill__body">
+                        <span class="promo-pill__val">₹10,000*</span>
+                        <span class="promo-pill__lbl">Room upgrade</span>
+                    </span>
+                </li>
+
+                <li class="promo-pill">
+                    <span class="promo-pill__icon">
+                        <!-- Replace with your own icon: assets/icon-antenatal.png -->
+                        <img src="assets/icon-antenatal.png" alt="" />
+                    </span>
+                    <span class="promo-pill__body">
+                        <span class="promo-pill__val">₹5,000*</span>
+                        <span class="promo-pill__lbl">Antenatal session</span>
+                    </span>
+                </li>
+            </ul>
+
+            <a href="#lead-form" class="promo-hero__cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>
+                Book your FREE consultation
+            </a>
+        </div>
+    </section>
+
+</body>
+
+</html>
