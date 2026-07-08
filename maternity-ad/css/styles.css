@@ -431,6 +431,8 @@
 }
 
 @media (max-width: 576px) {
+
+
     .bg-item-4 {
         width: 180px;
     }
@@ -1619,7 +1621,7 @@ ul {
 
     .benefits {
         margin: 20px auto;
-        padding: 14px;
+        padding: 14px 24px;
         border-radius: 14px;
     }
 
