@@ -84,13 +84,13 @@
     font-size: clamp(3rem, 3.3vw, 5.5rem);
     /* Bigger heading */
     line-height: 1.1;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.04em;
     margin: 0 0 clamp(6px, 1vw, 14px);
     color: var(--ink);
 }
 
 .promo-hero__title-accent {
-
+    letter-spacing: -0.04em;
     color: var(--pink);
 }
 
@@ -184,9 +184,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: clamp(32px, 3.4vw, 52px);
-    height: clamp(32px, 3.4vw, 52px);
-    min-width: clamp(32px, 3.4vw, 52px);
+
+    width: clamp(44px, 4.5vw, 64px);
+    height: clamp(44px, 4.5vw, 64px);
+    min-width: clamp(44px, 4.5vw, 64px);
+
     border-radius: 50%;
     background: var(--pink-soft);
     color: var(--pink);
