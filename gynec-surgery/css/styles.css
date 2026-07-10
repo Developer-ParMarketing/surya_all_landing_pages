@@ -72,7 +72,7 @@
     z-index: 2;
     height: 100%;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1060px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -92,7 +92,7 @@
 }
 
 .promo-hero__title-accent {
-    display: block;
+
     color: var(--pink);
 }
 
