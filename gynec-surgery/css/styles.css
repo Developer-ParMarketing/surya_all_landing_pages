@@ -50,15 +50,10 @@
 }
 
 .promo-hero__img {
-    position: static;
     width: 100%;
-    height: auto;
-    display: block;
-    object-fit: initial;
-    object-position: initial;
-
-    transform: translateX(25px);
-    /* Adjust as needed */
+    height: 100%;
+    object-fit: cover;
+    object-position: 80px center;
 }
 
 .promo-hero__scrim {
@@ -257,13 +252,17 @@
     }
 
     .promo-hero__content {
-        top: 24px;
+        top: 170px;
         left: 0;
         right: 0;
         width: 100%;
         max-width: none;
         padding: 7% 6% 28px;
         justify-content: flex-start;
+    }
+
+    .form-card {
+        margin-top: 82px;
     }
 
     .promo-hero__title {
