@@ -859,129 +859,413 @@ ul {
     }
 }
 
-/* ===== Conditions — tag grid ===== */
-.condition-grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-    margin-top: 20px;
-    padding: 0;
+/*==============================
+        CONDITIONS
+==============================*/
+
+.conditions-section {
+    overflow: hidden
 }
 
-.condition {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 14px 16px;
-    font-weight: 600;
-    font-size: .95rem;
-    color: var(--ink);
-    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+/* ============ DESKTOP: wave path ============ */
+.conditions-flow {
+    position: relative;
+    height: 320px;
+    margin: 70px auto 20px;
+    max-width: 1200px;
 }
 
-.condition:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 30px -20px rgba(44, 44, 43, .4);
-}
-
-.condition__dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.condition:nth-child(odd):hover {
-    border-color: var(--pink);
-}
-
-.condition:nth-child(even):hover {
-    border-color: var(--blue);
-}
-
-.condition:nth-child(odd) .condition__dot {
-    background: linear-gradient(135deg, var(--pink), var(--pink-2));
-}
-
-.condition:nth-child(even) .condition__dot {
-    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-}
-
-/* ============================================================
-   CHIPS (symptoms / conditions)
-   ============================================================ */
-.highlight-chips {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 20px;
-    padding: 0;
-}
-
-.chip {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.wave-line {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    min-height: 60px;
-    padding: 14px 18px;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.4;
-    color: var(--ink);
-
-
-    transition: all .25s ease;
+    height: 100%;
 }
 
-.chip:hover {
-    transform: translateY(-3px);
+.wave-line path {
+    fill: none;
+    stroke: #dcd7ee;
+    stroke-width: 2;
 }
 
-.chip__icon {
-    flex-shrink: 0;
+.condition-item {
+    position: absolute;
+    width: 100px;
+    text-align: center;
+    transform: translateX(-50%);
+    transition: .3s ease;
+}
+
+/* left position per item — evenly spaced along the wave, 10 fixed stops */
+.condition-item:nth-child(2) {
+    left: 5%
+}
+
+.condition-item:nth-child(3) {
+    left: 15%
+}
+
+.condition-item:nth-child(4) {
+    left: 25%
+}
+
+.condition-item:nth-child(5) {
+    left: 35%
+}
+
+.condition-item:nth-child(6) {
+    left: 45%
+}
+
+.condition-item:nth-child(7) {
+    left: 55%
+}
+
+.condition-item:nth-child(8) {
+    left: 65%
+}
+
+.condition-item:nth-child(9) {
+    left: 75%
+}
+
+.condition-item:nth-child(10) {
+    left: 85%
+}
+
+.condition-item:nth-child(11) {
+    left: 95%
+}
+
+/* odd stops sit on the wave's high points, even on the low points */
+.condition-item:nth-child(odd) {
+    top: 40px
+}
+
+.condition-item:nth-child(even) {
+    top: 170px
+}
+
+.condition-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
     color: #fff;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 24px;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .10);
 }
 
-
-.chip--pink .chip__icon {
-    background: linear-gradient(135deg, var(--pink), var(--pink-2));
+.condition-icon.pink {
+    background: linear-gradient(135deg, var(--pink), var(--pink-2))
 }
 
-.chip--blue:hover {
-    border-color: var(--blue);
+.condition-icon.blue {
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark))
 }
 
-.chip--blue .chip__icon {
-    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+.condition-item h4 {
+    font-size: .82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0;
 }
 
-@media (max-width: 576px) {
-    .highlight-chips {
-        gap: 10px;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
+@media (hover:hover) and (pointer:fine) {
+    .condition-item:hover .condition-icon {
+        transform: scale(1.12) rotate(-8deg);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, .16);
+    }
+}
+
+/* ============ MOBILE: 2-column grid ============ */
+@media (max-width:768px) {
+
+    .conditions-flow {
+        position: relative;
+        height: auto;
+        margin: 40px auto 0;
+        padding: 0 16px;
+        max-width: 480px;
+        width: 100%;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 16px;
     }
 
-    .chip {
-        font-size: 13px;
-        padding: 10px 14px;
+    .wave-line,
+    .conditions-flow::before {
+        display: none;
     }
 
-    .chip__icon {
-        width: 18px;
-        height: 18px;
-        font-size: 10px;
+    /* MUST override the desktop nth-child rules directly — they're more specific
+       than a plain .condition-item reset and will otherwise win regardless of order */
+    .condition-item:nth-child(n) {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        transform: none;
+    }
+
+    .condition-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .condition-item::after,
+    .condition-item::before {
+        display: none;
+    }
+
+    .condition-icon {
+        width: 54px;
+        height: 54px;
+        margin: 0 0 10px;
+        font-size: 20px;
+    }
+
+    .condition-item h4 {
+        font-size: .8rem;
+        line-height: 1.35;
+    }
+}
+
+@media (max-width:400px) {
+    .conditions-flow {
+        padding: 0 12px;
+        gap: 24px 12px;
+    }
+
+    .condition-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 18px;
+    }
+
+    .condition-item h4 {
+        font-size: .75rem;
+    }
+}
+
+/* Premium Symptoms Radial Component */
+.symptoms-radial {
+    overflow: hidden
+}
+
+.radial-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 1/1;
+    margin: 50px auto
+}
+
+.radial-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1
+}
+
+.radial-lines line {
+    stroke: #d9dde8;
+    stroke-width: 2;
+    stroke-dasharray: 6 8
+}
+
+.center-node {
+    width: 170px;
+    height: 170px;
+    /* was 180px — slightly tighter, less dead space */
+    padding: 0 12px;
+}
+
+.center-icon {
+    width: 64px;
+    height: 64px;
+    /* was 70px */
+    margin-bottom: 10px;
+}
+
+.center-node h3 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.center-node p {
+    font-size: .85rem;
+    margin-top: 2px;
+}
+
+.symptom {
+    position: absolute;
+    width: 21.4%;
+    text-align: center;
+    z-index: 2
+}
+
+.symptom .icon {
+    width: 38%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: clamp(14px, 3cqw, 22px);
+    transition: .35s;
+    animation: float 4s ease-in-out infinite
+}
+
+.symptom .icon.pink {
+    background: linear-gradient(135deg, var(--pink), var(--pink-2))
+}
+
+.symptom .icon.blue {
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark))
+}
+
+.symptom span {
+    display: block;
+    font-weight: 600;
+    line-height: 1.4;
+    font-size: clamp(11px, 1.6cqw, .95rem)
+}
+
+.symptom:hover .icon {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, .18)
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-8px)
+    }
+}
+
+/* Positions as % of wrapper (converted from your original px values / 700) */
+.s1 {
+    left: 39.3%;
+    top: 1.4%
+}
+
+.s2 {
+    right: 10%;
+    top: 9%
+}
+
+.s3 {
+    right: 0;
+    top: 33.7%
+}
+
+.s4 {
+    right: 0;
+    bottom: 30.7%
+}
+
+.s5 {
+    right: 10%;
+    bottom: 12.9%
+}
+
+.s6 {
+    left: 39.3%;
+    bottom: 1.4%
+}
+
+.s7 {
+    left: 10%;
+    bottom: 12.9%
+}
+
+.s8 {
+    left: 0;
+    bottom: 27.7%
+}
+
+.s9 {
+    left: 0;
+    top: 33.7%
+}
+
+.s10 {
+    left: 10%;
+    top: 9%
+}
+
+@media(max-width:991px) {
+    .radial-wrapper {
+        width: 100%;
+        height: auto;
+        max-width: none;
+        aspect-ratio: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px
+    }
+
+    .radial-lines {
+        display: none
+    }
+
+    .center-node {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        grid-column: 1/-1;
+        margin: 0 auto 10px;
+        width: 180px
+    }
+
+    .symptom {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: 100%
+    }
+
+    .symptom .icon {
+        width: 58px
+    }
+}
+
+@media(max-width:640px) {
+    .center-node {
+        width: 150px;
+        height: 150px
+    }
+
+    .center-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 24px
+    }
+
+    .symptom .icon {
+        width: 48px;
+        height: 48px;
+        font-size: 18px
+    }
+
+    .symptom span {
+        font-size: .82rem
     }
 }
 
@@ -1805,5 +2089,103 @@ figcaption {
         animation: none !important;
         transition: none !important;
         scroll-behavior: auto !important;
+    }
+}
+
+
+/* ============================================================
+   JOURNEY IMAGE BAND
+   ============================================================ */
+.journey {
+    position: relative;
+    margin-top: 20px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    box-shadow: var(--shadow);
+}
+
+.journey img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dark overlay */
+.journey::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, .25) 0%,
+            rgba(0, 0, 0, .45) 45%,
+            rgba(0, 0, 0, .75) 100%);
+}
+
+.journey__overlay {
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    width: 100%;
+    padding: 32px;
+    background: none;
+    color: #fff;
+}
+
+.journey__overlay h2 {
+    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.journey__overlay p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, .95);
+    max-width: 560px;
+}
+
+@media (max-width: 576px) {
+
+    .journey {
+        min-height: 420px;
+    }
+
+    .journey img {
+        object-position: 85% center;
+
+    }
+
+    .journey::before {
+        background: linear-gradient(180deg,
+                rgba(0, 0, 0, .15) 0%,
+                rgba(0, 0, 0, .45) 35%,
+                rgba(0, 0, 0, .85) 100%);
+    }
+
+    .journey__overlay {
+        padding: 18px;
+    }
+
+    .journey__overlay h2 {
+        font-size: 24px;
+        line-height: 1.25;
+        margin-bottom: 10px;
+    }
+
+    .journey__overlay p {
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 100%;
+    }
+
+    .journey__overlay .btn {
+        width: 100%;
+        justify-content: center;
     }
 }
