@@ -1147,27 +1147,49 @@ ul {
 }
 
 .center-node {
-    width: 170px;
-    height: 170px;
-    /* was 180px — slightly tighter, less dead space */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 100px;
+    height: 100px;
     padding: 0 12px;
+    border-radius: 50%;
+    /* background: #fff; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* box-shadow: 0 20px 45px -18px rgba(44, 44, 43, .28); */
 }
 
 .center-icon {
     width: 64px;
     height: 64px;
-    /* was 70px */
     margin-bottom: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 26px;
 }
 
 .center-node h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
     line-height: 1.2;
+    margin: 0;
+    color: var(--ink);
 }
 
 .center-node p {
-    font-size: .85rem;
-    margin-top: 2px;
+    font-size: .8rem;
+    margin: 3px 0 0;
+    color: var(--muted);
 }
 
 .symptom {
@@ -1290,6 +1312,7 @@ ul {
         transform: none;
         grid-column: 1/-1;
         margin: 0 auto 10px;
+        display: none;
         width: 180px
     }
 
@@ -1309,8 +1332,8 @@ ul {
 
 @media(max-width:640px) {
     .center-node {
-        width: 150px;
-        height: 150px
+
+        display: none;
     }
 
     .center-icon {
@@ -2200,7 +2223,8 @@ figcaption {
 .journey__overlay h2 {
     font-size: clamp(1.8rem, 3vw, 2.3rem);
     line-height: 1.2;
-    margin-bottom: 12px;
+    margin-top: 100px;
+    margin-bottom: -10px;
     color: #fff;
 }
 
