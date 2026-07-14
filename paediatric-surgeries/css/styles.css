@@ -497,8 +497,9 @@ ul {
 }
 
 @media (max-width: 640px) {
-    .layout {
-        padding-top: 120px;
+
+    .layout__aside {
+        padding-top: 100px;
     }
 
     .promo-hero__title {
