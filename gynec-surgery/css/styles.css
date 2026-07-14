@@ -4,6 +4,34 @@
    Brand: Pink #ed3b6e · Blue #00a3d4 · Ink #2c2c2b · Font: Lato
    ============================================================ */
 
+.testimonial-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    transition: .3s;
+}
+
+.testimonial-text.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.read-more-btn {
+    border: none;
+    background: none;
+    color: var(--pink);
+    font-weight: 700;
+    cursor: pointer;
+    padding: 10px 0 0;
+    align-self: flex-start;
+    font-size: .88rem;
+}
+
+.read-more-btn:hover {
+    color: var(--pink-dark);
+}
+
 :root {
     --pink: #ed3b6e;
     --pink-2: #ff5d8f;

@@ -89,3 +89,11 @@
     // block accidental clicks after a drag
     track.addEventListener("click", function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
 })();
+
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const text = btn.previousElementSibling;
+        const expanded = text.classList.toggle('expanded');
+        btn.textContent = expanded ? 'Read Less' : 'Read More';
+    });
+});
