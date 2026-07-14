@@ -355,7 +355,8 @@ ul {
 .promo-hero__title {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(1.7rem, calc(0.046rem + 4.128vw), 5rem);
+    font-size: clamp(3rem, 3.3vw, 5.5rem);
+    /* Bigger heading */
     line-height: 1.1;
     letter-spacing: -0.04em;
     margin: 0 0 clamp(6px, 1vw, 14px);
@@ -398,7 +399,8 @@ ul {
 .promo-pills {
     list-style: none;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+    /* was commented out — causes overflow on mobile */
     gap: clamp(10px, 2vw, 28px);
     margin: 0 0 clamp(16px, 2.6vw, 28px);
     padding: 0;
@@ -437,11 +439,12 @@ ul {
     display: flex;
     flex-direction: column;
     line-height: 1.25;
+
 }
 
 .promo-pill__val {
     font-family: var(--font-body);
-    font-weight: 500;
+    font-weight: 700;
     font-size: clamp(.68rem, calc(0.457rem + 0.557vw), 1.125rem);
     color: var(--pink);
 }
@@ -495,16 +498,21 @@ ul {
 
 @media (max-width: 640px) {
     .promo-hero {
-        min-height: 320px;
+        min-height: 0;
+    }
+
+    .promo-hero__scrim {
+        display: none;
+        /* no longer needed once text isn't overlaying the image */
     }
 
     .promo-hero__content {
-        top: 230px;
-        left: 0;
-        right: 0;
+        position: static;
+        /* stack below image instead of overlaying it */
+        height: auto;
         width: 100%;
         max-width: none;
-        padding: 7% 6% 28px;
+        padding: 20px 20px 28px;
         justify-content: flex-start;
     }
 
@@ -515,7 +523,7 @@ ul {
     }
 
     .promo-hero__lead {
-        font-size: clamp(.78rem, calc(.71rem + .34vw), .85rem);
+        font-size: clamp(.85rem, calc(.78rem + .34vw), .95rem);
         margin-bottom: 8px;
     }
 
@@ -524,8 +532,14 @@ ul {
         margin: 6px 0 12px;
     }
 
+    .promo-pills {
+        gap: 14px 20px;
+    }
+
     .promo-pill {
         font-size: .85rem;
+        flex: 1 1 calc(50% - 10px);
+        /* 2 per row instead of 1 cramped row */
     }
 
     .promo-hero__cta {

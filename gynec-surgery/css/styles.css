@@ -167,7 +167,8 @@
 .promo-pills {
     list-style: none;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
+    /* was commented out — was causing overflow */
     gap: clamp(10px, 2vw, 28px);
     margin: 0 0 clamp(16px, 2.6vw, 28px);
     padding: 0;
@@ -210,7 +211,7 @@
 
 .promo-pill__val {
     font-family: var(--font-body);
-    font-weight: 500;
+    font-weight: 700;
     font-size: clamp(.68rem, calc(0.457rem + 0.557vw), 1.125rem);
     color: var(--pink);
 }
@@ -249,20 +250,30 @@
     }
 
     .promo-hero__img {
-        min-height: 560px;
+        min-height: 620px;
         object-fit: cover;
+        object-position: center 20%;
+    }
+
+    .promo-hero__scrim {
+        /* was a left-right desktop scrim; on mobile the text sits at the bottom, so fade bottom-up instead */
+        background: linear-gradient(180deg,
+                rgba(253, 240, 244, 0) 0%,
+                rgba(253, 240, 244, .55) 42%,
+                rgba(253, 240, 244, .96) 64%,
+                rgba(253, 240, 244, .98) 100%);
     }
 
     .promo-hero__content {
-        top: 170px;
-        left: 0;
-        right: 0;
+        position: absolute;
+        inset: 0;
+        /* replaces the guessed "top: 170px" */
         width: 100%;
         max-width: none;
-        padding: 7% 6% 28px;
-        justify-content: flex-start;
+        padding: 20px 20px 28px;
+        justify-content: flex-end;
+        /* anchors content to the bottom, adapts to any image height */
     }
-
 
     .promo-hero__title {
         font-size: clamp(1.5rem, 5vw, 1.9rem);
@@ -276,6 +287,27 @@
         margin-bottom: 16px;
     }
 
+    .promo-pills {
+        gap: 14px 16px;
+        margin-bottom: 18px;
+    }
+
+    .promo-pill {
+        flex: 1 1 calc(50% - 8px);
+        /* 2 pills per row instead of a cramped single column */
+        gap: 8px;
+    }
+
+    .promo-pill__icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+    }
+
+    .promo-pill__val {
+        font-size: .72rem;
+    }
+
     .promo-hero__ticks li {
         font-size: .85rem;
     }
@@ -285,6 +317,13 @@
         padding: 12px 22px;
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 380px) {
+    .promo-pill {
+        flex: 1 1 100%;
+        /* stack to 1 per row on very small phones so text doesn't get squeezed */
     }
 }
 
