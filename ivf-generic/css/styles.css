@@ -616,6 +616,7 @@ ul {
     .promo-hero__img {
         min-height: 850px;
         object-fit: cover;
+        object-position: 65% 0%;
     }
 
     .promo-hero__content {

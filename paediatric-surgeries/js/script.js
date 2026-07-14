@@ -48,3 +48,30 @@ document.querySelectorAll('.faq-flat-item').forEach(function (item) {
         }
     });
 });
+
+document.querySelectorAll('.testimonial-text').forEach(function (block) {
+
+    const fullText = block.innerText.trim();
+    const limit = 260; // characters
+
+    if (fullText.length <= limit) return;
+
+    const shortText = fullText.substring(0, limit);
+
+    block.innerHTML = `
+        ${shortText}
+        <span class="dots">...</span>
+        <span class="more-text">${fullText.substring(limit)}</span>
+        <button class="read-more-btn">Read more</button>
+    `;
+
+    const btn = block.querySelector('.read-more-btn');
+
+    btn.addEventListener('click', function () {
+        block.classList.toggle('expanded');
+
+        btn.textContent = block.classList.contains('expanded')
+            ? 'Read less'
+            : 'Read more';
+    });
+});
