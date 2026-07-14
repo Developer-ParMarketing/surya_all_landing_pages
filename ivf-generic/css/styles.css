@@ -614,7 +614,7 @@ ul {
 @media (max-width: 640px) {
 
     .promo-hero__img {
-        min-height: 850px;
+        min-height: 730px;
         object-fit: cover;
         object-position: 65% 0%;
     }
