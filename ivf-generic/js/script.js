@@ -53,15 +53,28 @@ document.addEventListener('DOMContentLoaded', function () {
 ------------------------------------------------------------------- */
 function refreshReadMoreButtons() {
     document.querySelectorAll('.testimonialSwiper .tcard').forEach(function (card) {
-        var text = card.querySelector('.testimonial-text');
-        var btn = card.querySelector('.read-more-btn');
+        const text = card.querySelector('.testimonial-text');
+        const btn = card.querySelector('.read-more-btn');
+
         if (!text || !btn) return;
 
-        // Skip cards already expanded by the user
-        if (text.classList.contains('expanded')) return;
+        // Temporarily remove clamp to measure full height
+        const wasExpanded = text.classList.contains('expanded');
+        if (!wasExpanded) {
+            text.classList.add('expanded');
+        }
 
-        var isClamped = text.scrollHeight > text.clientHeight + 2;
-        btn.style.display = isClamped ? '' : 'none';
+        const fullHeight = text.scrollHeight;
+
+        if (!wasExpanded) {
+            text.classList.remove('expanded');
+        }
+
+        // Height of 3 lines
+        const lineHeight = parseFloat(getComputedStyle(text).lineHeight);
+        const threeLines = lineHeight * 3;
+
+        btn.style.display = fullHeight > threeLines + 2 ? 'inline-block' : 'none';
     });
 }
 

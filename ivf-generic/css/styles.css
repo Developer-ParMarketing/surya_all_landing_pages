@@ -1796,13 +1796,14 @@ ul {
     margin: 0;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* Show only 3 lines */
     transition: .3s;
 }
 
 .testimonial-text.expanded {
-    -webkit-line-clamp: unset;
+    display: block;
     overflow: visible;
 }
 

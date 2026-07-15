@@ -1618,6 +1618,9 @@ ul {
 }
 
 @media (max-width: 576px) {
+    .form-arrow--right {
+        display: none;
+    }
 
     .benefits {
         margin: 20px auto;
@@ -1765,6 +1768,7 @@ ul {
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     transition: .3s;
+
 }
 
 .testimonial-text.expanded {
@@ -2551,6 +2555,10 @@ FAQ============================================================*/
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1020px) {
+    .form-arrow--right {
+        display: none;
+    }
+
     .layout {
         grid-template-columns: 1fr;
         row-gap: 20px;
