@@ -196,17 +196,18 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    /* was commented out — was causing overflow */
-    gap: clamp(10px, 2vw, 28px);
+    gap: 20px;
     margin: 0 0 clamp(16px, 2.6vw, 28px);
     padding: 0;
 }
 
 .promo-pill {
+    flex: 1 1 calc(50% - 10px);
+    /* Two items per row */
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 12px;
+    min-width: 280px;
 }
 
 .promo-pill__icon {
