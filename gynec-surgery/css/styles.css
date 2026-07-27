@@ -4,6 +4,27 @@
    Brand: Pink #ed3b6e · Blue #00a3d4 · Ink #2c2c2b · Font: Lato
    ============================================================ */
 
+.source-note {
+    position: fixed;
+    bottom: 12px;
+    right: 20px;
+    font-size: 12px;
+    color: #666;
+    background: rgba(255, 255, 255, .9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 9999;
+}
+
+@media (max-width: 768px) {
+    .source-note {
+        bottom: 70px;
+        /* Adjust based on your bottom bar height */
+        right: 10px;
+        font-size: 10px;
+    }
+}
+
 .testimonial-text {
     overflow: hidden;
     display: -webkit-box;

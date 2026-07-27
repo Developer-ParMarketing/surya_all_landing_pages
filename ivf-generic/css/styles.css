@@ -6,6 +6,28 @@
    Spacing: capped at 20px max per section
    ============================================================ */
 
+.source-note {
+    position: fixed;
+    bottom: 12px;
+    right: 20px;
+    font-size: 12px;
+    color: #666;
+    background: rgba(255, 255, 255, .9);
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 9999;
+}
+
+@media (max-width: 768px) {
+    .source-note {
+        bottom: 70px;
+        /* Adjust based on your bottom bar height */
+        right: 10px;
+        font-size: 10px;
+    }
+}
+
+
 :root {
     --pink: #ed3b6e;
     --pink-2: #ff5d8f;
